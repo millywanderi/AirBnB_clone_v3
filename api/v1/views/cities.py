@@ -14,7 +14,7 @@ from models.state import State
                  strict_slashes=False)
 def get_cities(state_id):
     """Return cities of a given state"""
-    if stated_id:
+    if state_id:
         dic_state = storage.get(State, state_id)
         if dic_state is None:
             abort(404)
