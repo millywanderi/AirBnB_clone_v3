@@ -26,7 +26,7 @@ classes = {"Amenity": Amenity, "City": City, "Place": Place,
 class TestDBStorageDocs(unittest.TestCase):
     """Tests to check the documentation and style of DBStorage class"""
     @classmethod
-   def setUpClass(cls):
+    def setUpClass(cls):
         """Set up for the doc tests"""
         cls.dbs_f = inspect.getmembers(DBStorage, inspect.isfunction)
 
@@ -86,6 +86,7 @@ class TestFileStorage(unittest.TestCase):
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_save(self):
         """Test that save properly saves objects to file.json"""
+
 
 class TestDBStorage(unittest.TestCase):
     """DB storage class tests"""
