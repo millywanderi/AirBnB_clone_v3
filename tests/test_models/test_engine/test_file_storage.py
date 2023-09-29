@@ -123,14 +123,13 @@ class TestFileStorage(unittest.TestCase):
         user_obj.save()
         self.assertIs(storage.get("User", user_obj), user_obj)
 
-        @unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE") == 'db',
-                "it is db storage")
-
+    @unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE") == 'db',
+                     "it is db storage")
     def test_count_obj(self):
         storage = FileStorage()
         firs_len = len(storage.all())
         self.assertEqual(storage.count(), firs_len)
-        statelen= len(storage.all("State"))
+        statelen = len(storage.all("State"))
         self.assertEqual(storage.count("State"), statelen)
         state_obj = State()
         state_obj.save()
