@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""CRUD methods in the city"""
 from api.v1.views import app_views
 from models import storage
 from flask import jsonify
