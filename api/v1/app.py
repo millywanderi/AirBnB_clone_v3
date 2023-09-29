@@ -20,6 +20,12 @@ def close_session(db):
     storage.close()
 
 
+@app.errorhandler(404)
+def oops_not_found(error):
+    """Handles 404 errors"""
+    return make_response(jsonify({"error": "Not found"}), 404)
+
+
 if __name__ == "__main__":
     hst = os.getenv("HBNB_API_HOST", default="0.0.0.0")
     prt = int(os.getenv("HBNB_API_PORT", default=5000))
