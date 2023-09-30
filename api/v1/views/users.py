@@ -31,11 +31,11 @@ def get_user(user_id):
             return jsonify(dic_users.to_dict())
 
 
-@app_views.routes('/users/<user_id>', strict_slashes=False,
+@app_views.route('/users/<user_id>', strict_slashes=False,
                   methods=['DELETE'])
 def delete_user(user_id):
     """Delete a user if the id exists,if not, raise an error"""
-    if user_i:
+    if user_id:
         users = storage.get(User, user_id)
         if users is None:
             abort(404)
