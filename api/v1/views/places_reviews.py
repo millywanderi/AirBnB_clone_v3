@@ -84,8 +84,8 @@ def post_review(place_id):
 
 
 @app_views.route('reviews/<review_id>',
-                   strict_slashes=False,
-                   methods=['PUT'])
+                 strict_slashes=False,
+                 methods=['PUT'])
 def update_review(review_id):
     """Updates a review"""
     if review_id:
