@@ -83,7 +83,7 @@ def post_review(place_id):
     return make_response(jsonify(reviews.to_dict()), 201)
 
 
-@app_reviews.route('reviews/<review_id>',
+@app_views.route('reviews/<review_id>',
                    strict_slashes=False,
                    methods=['PUT'])
 def update_review(review_id):
