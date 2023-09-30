@@ -32,7 +32,7 @@ def get_user(user_id):
 
 
 @app_views.route('/users/<user_id>', strict_slashes=False,
-                  methods=['DELETE'])
+                 methods=['DELETE'])
 def delete_user(user_id):
     """Delete a user if the id exists,if not, raise an error"""
     if user_id:
