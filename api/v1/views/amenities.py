@@ -75,7 +75,7 @@ def update_amenity(amenity_id):
         if not request.get_json():
             return make_response(jsonify({"error": "Not a JSON"}), 400)
         reque = request.get_json()
-        for key, value in reque.item():
+        for key, value in reque.items():
             if key not in ['id', 'created_at', 'update_at']:
                 setattr(amenities, key, value)
         amenities.save()
