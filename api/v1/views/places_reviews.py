@@ -81,7 +81,7 @@ def post_review(place_id):
         reque['place_id'] = place_id
         reviews = Review(**reque)
         reviews.save()
-        return make_response(jsonify(reviews.to_dict()). 201)
+        return make_response(jsonify(reviews.to_dict()), 201)
 
     @app_reviews.route('reviews/<review_id>',
                        strict_slashes=False,
