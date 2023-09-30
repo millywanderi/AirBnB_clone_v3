@@ -32,7 +32,7 @@ def get_user(user_id):
 
 
 @app_views.routes('/users/<user_id>', strict_slashes=False,
-                  method=['DELETE'])
+                  methods=['DELETE'])
 def delete_user(user_id):
     """Delete a user if the id exists,if not, raise an error"""
     if user_i:
@@ -51,7 +51,7 @@ def post_user():
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     reque = request.get_json()
-    if "email" nit in reque:
+    if "email" not in reque:
         return make_response(jsonify({"error": "Missing email"}), 400)
     if "password" not in reque:
         return make_response(jsonify({"error": "Missing password"}), 400)
@@ -66,7 +66,7 @@ def update_user(user_id):
     """Updates details of a user"""
     if user_id:
         users = storage.get(User, user_id)
-        if users in None:
+        if users is None:
             abort(404)
 
         if not request.get_json():
