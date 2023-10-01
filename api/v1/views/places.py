@@ -161,7 +161,7 @@ def places_search():
         HBNB_API_HOST = getenv('HBNB_API_HOST')
         HBNB_API_PORT = getenv('HBNB_API_PORT')
 
-        port = 5000 if no HBNB_API_HOST else HBNB_API_PORT
+        port = 5000 if not HBNB_API_HOST else HBNB_API_PORT
         first_url = "http://0.0.0.0{}/api/v1/places/".format(port)
         while m < limit:
             place = places[m]
