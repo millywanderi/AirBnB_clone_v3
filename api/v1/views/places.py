@@ -165,7 +165,7 @@ def places_search():
         first_url = "http://0.0.0.0:{}/api/v1/places/".format(port)
         while m < limit:
             place = places[m]
-            url = first_url + '{}/amenities'
+            url = "{}/amenities".format(first_url, place.id)
             reque = url.format(place.id)
             response = requests.get(reque)
             am_d = json.loads(response.text)
