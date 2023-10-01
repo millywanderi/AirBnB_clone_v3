@@ -129,7 +129,7 @@ def places_search():
             not body_reque.get('amenities')
     ):
         places = storage.all(Place)
-        return jsonify([Place.to_dict() for place in places.values()])
+        return jsonify([place.to_dict() for place in places.values()])
 
     places = []
 
@@ -161,8 +161,8 @@ def places_search():
         HBNB_API_HOST = getenv('HBNB_API_HOST')
         HBNB_API_PORT = getenv('HBNB_API_PORT')
 
-        port = 5000 if not HBNB_API_HOST else HBNB_API_PORT
-        first_url = "http://0.0.0.0{}/api/v1/places/".format(port)
+        port = 5000 if not HBNB_API_PORT else HBNB_API_PORT
+        first_url = "http://0.0.0.0:{}/api/v1/places/".format(port)
         while m < limit:
             place = places[m]
             url = first_url + '{}/amenities'
