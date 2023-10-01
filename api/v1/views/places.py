@@ -169,7 +169,7 @@ def places_search():
             reque = url.format(place.id)
             response = requests.get(reque)
             am_d = json.loads(response.text)
-            amenities = [storage.get("Amenity", o['id']) for 0 in am_d]
+            amenities = [storage.get("Amenity", o['id']) for o in am_d]
             for amenity in ams:
                 if amenity not in amenities:
                     places.pop(m)
