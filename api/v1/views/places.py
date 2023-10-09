@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """Places view API request handlers"""
 
-from api.v1 import app_views
+from api.v1.views import app_views
 from flask import jsonify, abort, request
 from models import storage
 from models.state import State
 from models.city import City
-from models.user import user
+from models.user import User
 from models.place import Place
 from models.amenity import Amenity
 
@@ -60,7 +60,7 @@ def places_search():
         place_list = [place for place in storage.all(Place).values()]
 
     # convert objs to dict and remove 'amenities' key
-    place_list = [place.to_dict() for place on place_list]
+    place_list = [place.to_dict() for place in place_list]
     for place in place_list:
         try:
             del place['amenities']
@@ -164,8 +164,9 @@ def place_methods(place_id=None):
 
             # update Place obj
             ignore = ['id', 'user_id', 'city_id', 'created_at', 'updated_at']
-            for key not in ignore:
-                setattr(place, key, val)
+            for key, val in body_request.items():
+                if key not in ignore:
+                    setattr(place, key, val)
 
             storage.save()
             return jsonify(place.to_dict()), 200
